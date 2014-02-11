@@ -4,6 +4,7 @@ feature "Manage a user" do
   before :each do
     @Joe = User.create(email: "Joe@gmail.com", password: "password")
     @post = Post.create(title: "Top 10 today", body: "This is an empty post")
+    @Joe.posts << @post
   end
 
   scenario "a user should be able to sign up" do
@@ -35,6 +36,28 @@ feature "Manage a user" do
     expect(page).to have_content("View all posts")
     expect(page).to have_content("Top 10 today")
     expect(page).to have_content('This is an empty post')
-    save_and_open_page
+
   end
+
+  scenario "Make a comment" do
+    visit new_user_session_path
+    fill_in 'Email', with: "Joe@gmail.com"
+    fill_in 'Password', with: "password"
+    click_button 'Sign in'
+
+    visit new_user_post_path(@Joe)
+    fill_in 'Title', with: 'Top 10 today'
+    fill_in 'Body', with: 'This is an empty post'
+    click_on 'Create Post'
+
+    visit new_user_post_comment_path(@Joe, @post)
+    fill_in 'Body', with: 'Pretty Decent!'
+    click_on 'Create Comment'
+
+    expect(page).to have_content('Pretty Decent')
+    save_and_open_page
+
+  end
+
+
 end
