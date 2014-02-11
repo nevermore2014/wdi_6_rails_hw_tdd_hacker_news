@@ -21,14 +21,19 @@ feature "Manage a user" do
     click_button 'Sign in'
   end
 
-  # scenario "Submit a new post" do
-  #   visit user_posts_path
-  #   click_link 'Add post'
-  #   fill_in 'Title', with: 'Top 10 today'
-  #   fill_in 'Body', with: 'This is an empty post'
-  #   click_on 'Create post'
-  #   expect(page).to have_content("View all posts")
-  #   expect(page).to have_content("Top 10 today")
-  #   expect(page).to have_content('This is an empty post')
-  # end
+  scenario "Submit a new post" do
+    visit new_user_session_path
+    fill_in 'Email', with: "Joe@gmail.com"
+    fill_in 'Password', with: "password"
+    click_button 'Sign in'
+
+    visit new_user_post_path(@Joe)
+    fill_in 'Title', with: 'Top 10 today'
+    fill_in 'Body', with: 'This is an empty post'
+    click_on 'Create Post'
+
+    expect(page).to have_content("View all posts")
+    expect(page).to have_content("Top 10 today")
+    expect(page).to have_content('This is an empty post')
+  end
 end

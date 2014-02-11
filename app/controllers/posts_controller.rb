@@ -1,23 +1,24 @@
 class PostsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :new, :create]
   def index
-    # @movies = Movie.all
+    @posts = Post.all
   end
 
-  # def new
-  #   @movie = Movie.new
-  # end
+  def new
+    @user = current_user
+    @post = Post.new
+  end
 
-  # def create
-  #   @movie = Movie.create(movies_params)
-  #   @movie.save!
-  #   redirect_to movies_path
-  # end
+  def create
+    @post = Post.create!(posts_params)
+    @post.save!
+    redirect_to user_posts_path
+  end
 
-  # private
+  private
 
-  # def movies_params
-  #   params.require(:movie).permit(:title, :year)
-  # end
+  def posts_params
+    params.require(:post).permit(:title, :body)
+  end
 
 end
