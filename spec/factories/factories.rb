@@ -17,4 +17,17 @@ FactoryGirl.define do
     body 'Pretty decent'
   end
 
+  factory :votable do
+    user
+    post
+    comment
+    direction true
+  end
+
+  factory :votable do
+    user
+    post
+    direction true
+  end
+
 end

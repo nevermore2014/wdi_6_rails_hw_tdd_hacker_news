@@ -3,14 +3,16 @@ HackerNews::Application.routes.draw do
   
   resources :users do
     resources :posts do
-      resources :comments
+      resources :comments do
+        resources :votes, defaults: { votable: 'comment' }
     end
   end
 
-  # resources :comments do
-  #   resources :votes
-  # end
-
+  resources :users do
+    resources :posts do
+      resources :votes, defaults: { votable: 'post'}
+    end
+  end
 
 
   root to: 'posts#index'

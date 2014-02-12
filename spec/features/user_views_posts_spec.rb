@@ -22,7 +22,7 @@ feature 'User views their posts' do
 
       @user = create(:user)
       @post = create(:post, title: 'Top 3 today', user: @user)
-      
+
 
       create(:comment, body: 'Awesome!', user: @user, post: @post)
       sign_in_as(@user)
@@ -32,5 +32,6 @@ feature 'User views their posts' do
 
       expect(page).to have_content 'Awesome!'
   end
+
 
 end
