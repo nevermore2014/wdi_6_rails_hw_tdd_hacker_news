@@ -8,9 +8,6 @@ class VotesController < ApplicationController
   end
 
 
-  def edit
-  end
-
   def create
     @vote = @votable.votes.new(vote_params)
 
