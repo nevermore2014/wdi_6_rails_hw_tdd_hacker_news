@@ -6,13 +6,11 @@ class Post < ActiveRecord::Base
   validates :title, presence: true
   validates :body, presence: true
 
+
   def vote_count
-    count = 0
-    self.votable.each do |vote|
-      if vote.direction == true
-        count += 1
-      end
-    count
-  end
+       up_votes = votes.where(direction: true).count
+       down_votes = votes.where(direction: false).count
+       up_votes - down_votes
+  end 
 
 end
