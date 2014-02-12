@@ -55,7 +55,6 @@ feature "Manage a user" do
     click_on 'Create Comment'
 
     expect(page).to have_content('Pretty Decent')
-    save_and_open_page
 
   end
 
