@@ -2,4 +2,7 @@
 
 <% @comments.each do |comment| %>
   <%= comment.body %>
+  <%= comment.vote_count %>
 <% end %>
+
+<%= link_to 'Up vote', [:toggle_up_comment, @votable, @vote] %> | <%= link_to 'Down vote', [:toggle_down_comment, @votable, @vote] %>

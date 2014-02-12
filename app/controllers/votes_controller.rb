@@ -11,12 +11,28 @@ class VotesController < ApplicationController
     @vote = Vote.find(params[:id])
     @vote.direction = true
     @vote.save!
+    redirect_to user_posts_path
   end
 
   def toggle_down
     @vote = Vote.find(params[:id])
     @vote.direction = false
     @vote.save!
+    redirect_to user_posts_path
+  end
+
+  def toggle_up_comment
+    @vote = Vote.find(params[:id])
+    @vote.direction = true
+    @vote.save!
+    redirect_to user_post_comments_path
+  end
+
+  def toggle_down_comment
+    @vote = Vote.find(params[:id])
+    @vote.direction = false
+    @vote.save!
+    redirect_to user_post_comments_path
   end
 
 
