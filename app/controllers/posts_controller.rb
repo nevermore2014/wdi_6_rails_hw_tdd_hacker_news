@@ -24,6 +24,7 @@ class PostsController < ApplicationController
   def show
     @user = current_user
     @post = current_user.posts.find(params[:id])
+    binding.pry
   end
 
   private

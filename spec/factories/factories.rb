@@ -11,9 +11,10 @@ FactoryGirl.define do
     body 'This is an empty post'
   end
 
-  # factory :comment do
-    
-  #   body 'Pretty decent'
-  # end
+  factory :comment do
+    user
+    post
+    body 'Pretty decent'
+  end
 
 end

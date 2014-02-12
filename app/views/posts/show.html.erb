@@ -1,3 +1,5 @@
-<% @post.comments do |comment| %>
+<h1>Comments</h1>
+
+<% @post.comments.each do |comment| %>
   <%= comment.body %>
 <% end %>

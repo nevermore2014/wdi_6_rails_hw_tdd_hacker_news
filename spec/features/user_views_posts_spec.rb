@@ -4,6 +4,7 @@ feature 'User views their posts' do
   scenario 'show all the post of a certain user' do
 
     user = create(:user)
+    
     create(:post, title: 'Top 10 today', user: user)
     create(:post, title: 'Great story', user: user)
     create(:post, title: 'Obama', user: user)
@@ -16,4 +17,20 @@ feature 'User views their posts' do
 
     expect(page).to_not have_content 'Jerkface'
   end
+
+  scenario 'show all the comments of a certain post' do
+
+      @user = create(:user)
+      @post = create(:post, title: 'Top 3 today', user: @user)
+      
+
+      create(:comment, body: 'Awesome!', user: @user, post: @post)
+      sign_in_as(@user)
+      visit user_post_path(@user, @post)
+      save_and_open_page
+
+
+      expect(page).to have_content 'Awesome!'
+  end
+
 end
