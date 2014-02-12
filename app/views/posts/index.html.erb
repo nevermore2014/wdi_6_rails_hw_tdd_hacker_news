@@ -5,3 +5,5 @@
   <%= post.body %>
   <%= post.vote_count %>
 <% end %>
+</br>
+<%= link_to 'Up vote', [:toggle_up, @votable, @vote] %> | <%= link_to 'Down vote', [:toggle_down, @votable, vote] %>

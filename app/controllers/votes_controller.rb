@@ -7,6 +7,18 @@ class VotesController < ApplicationController
     @vote = Vote.new
   end
 
+  def toggle_up
+    @vote = Vote.find(params[:id])
+    @vote.direction = true
+    @vote.save!
+  end
+
+  def toggle_down
+    @vote = Vote.find(params[:id])
+    @vote.direction = false
+    @vote.save!
+  end
+
 
   def create
     @vote = @votable.votes.new(vote_params)
@@ -17,25 +29,6 @@ class VotesController < ApplicationController
       else
         format.html { render action: 'new' }
       end
-    end
-  end
-
-  def update
-    respond_to do |format|
-      if @vote.update(vote_params)
-        format.html { redirect_to [@votable, @vote], notice: 'vote was successfully updated.' }
-      else
-        format.html { render action: 'edit' }
-      end
-    end
-  end
-
-
-  def destroy
-    @vote.destroy
-    respond_to do |format|
-      format.html { redirect_to [@votable, :votes] }
-
     end
   end
 
