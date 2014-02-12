@@ -5,6 +5,7 @@ HackerNews::Application.routes.draw do
     resources :posts do
       resources :comments do
         resources :votes, defaults: { votable: 'comment' }
+      end
     end
   end
 
