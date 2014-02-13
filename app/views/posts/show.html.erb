@@ -5,7 +5,7 @@
   <%= comment.body %>
   <%= vote_count_comment(comment) %> points |
   <% if user_signed_in? %>
-    <%= link_to 'Up vote', post_comment_vote_path(@post, comment, direction: true ), method: :post %> | <%= link_to 'Down vote', post_comment_vote_path(@post, comment, direction: false), method: :post %>
+    <%= link_to 'Up vote', post_comment_votes_path(@post, comment, direction: true ), method: :post %> | <%= link_to 'Down vote', post_comment_votes_path(@post, comment, direction: false), method: :post %>
   <% end %>
   </br>
   </br>
