@@ -49,3 +49,5 @@ group :development do
   gem 'rails-footnotes'
   gem 'smusher'
 end
+
+gem "bullet", :group => "development"

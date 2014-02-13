@@ -14,7 +14,6 @@ feature 'User views their posts' do
     expect(page).to have_content 'Top 10 today'
     expect(page).to have_content 'Great story'
     expect(page).to have_content 'Obama'
-    expect(page).to_not have_content 'Jerkface'
   end
 
   scenario 'show all the comments of a certain post' do

@@ -35,7 +35,7 @@ feature "Manage a user" do
 
     expect(page).to have_content("View all posts")
     expect(page).to have_content("Top 10 today")
-    expect(page).to have_content('This is an empty post')
+
 
   end
 
