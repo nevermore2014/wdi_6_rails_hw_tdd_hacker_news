@@ -6,4 +6,9 @@ module ApplicationHelper
     # down_votes = Vote.where(direction: false).count
     # up_votes - down_votes
   end
+
+  def vote_count_comment(votable)
+    comment_found = Comment.find(votable.id)
+    comment_found.votes.where(direction: true).count - comment_found.votes.where(direction: false).count
+  end
 end
