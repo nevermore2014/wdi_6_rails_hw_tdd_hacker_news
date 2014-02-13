@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'User views their posts' do
+feature 'User all the posts' do
   scenario 'show all the post of a certain user' do
 
     user = create(:user)
@@ -10,7 +10,6 @@ feature 'User views their posts' do
     create(:post, title: 'Jerkface')
 
     sign_in_as(user)
-    save_and_open_page
     expect(page).to have_content 'Top 10 today'
     expect(page).to have_content 'Great story'
     expect(page).to have_content 'Obama'

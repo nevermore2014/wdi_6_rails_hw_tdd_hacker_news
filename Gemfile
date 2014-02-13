@@ -50,4 +50,3 @@ group :development do
   gem 'smusher'
 end
 
-gem "bullet", :group => "development"
