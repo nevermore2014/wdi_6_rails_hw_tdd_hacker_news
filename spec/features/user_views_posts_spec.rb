@@ -4,7 +4,6 @@ feature 'User views their posts' do
   scenario 'show all the post of a certain user' do
 
     user = create(:user)
-    
     create(:post, title: 'Top 10 today', user: user)
     create(:post, title: 'Great story', user: user)
     create(:post, title: 'Obama', user: user)
@@ -27,8 +26,6 @@ feature 'User views their posts' do
       create(:comment, body: 'Awesome!', user: @user, post: @post)
       sign_in_as(@user)
       visit post_path(@post)
-      
-
 
       expect(page).to have_content 'Awesome!'
   end

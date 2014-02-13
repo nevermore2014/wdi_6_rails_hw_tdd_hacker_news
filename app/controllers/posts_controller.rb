@@ -13,7 +13,6 @@ class PostsController < ApplicationController
   def create
     @post = Post.create!(posts_params)
     @post.save!
-    current_user.posts << @post
     redirect_to posts_path
   end
 
