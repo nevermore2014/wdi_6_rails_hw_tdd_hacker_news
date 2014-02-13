@@ -3,48 +3,19 @@ class VotesController < ApplicationController
   before_action :set_votable # Gives us @votable on all actions
 
 
-  def new
-    @vote = Vote.new
-  end
-
-  def toggle_up
-    @vote = Vote.find(params[:id])
-    @vote.direction = true
-    @vote.save!
-    redirect_to user_posts_path
-  end
-
-  def toggle_down
-    @vote = Vote.find(params[:id])
-    @vote.direction = false
-    @vote.save!
-    redirect_to user_posts_path
-  end
-
-  def toggle_up_comment
-    @vote = Vote.find(params[:id])
-    @vote.direction = true
-    @vote.save!
-    redirect_to user_post_comments_path
-  end
-
-  def toggle_down_comment
-    @vote = Vote.find(params[:id])
-    @vote.direction = false
-    @vote.save!
-    redirect_to user_post_comments_path
-  end
-
-
   def create
-    @vote = @votable.votes.new(vote_params)
 
-    respond_to do |format|
-      if @vote.save
-        format.html { redirect_to [@votable, @vote], notice: 'Vote was successfully created.' }
-      else
-        format.html { render action: 'new' }
-      end
+    if params[:direction] == 'true'
+      @vote = @votable.votes.new(direction: true, user: current_user )
+    else
+      @vote = @votable.votes.new(direction: false, user: current_user )
+    end
+
+    if @vote.save
+      redirect_to :back
+    else
+      flash[:errors] = @vote.errors.full_messages.join(', ')
+      redirect_to :back
     end
   end
 

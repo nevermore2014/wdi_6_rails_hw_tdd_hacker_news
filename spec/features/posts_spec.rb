@@ -28,7 +28,7 @@ feature "Manage a user" do
     fill_in 'Password', with: "password"
     click_button 'Sign in'
 
-    visit new_user_post_path(@Joe)
+    visit new_post_path(@post)
     fill_in 'Title', with: 'Top 10 today'
     fill_in 'Body', with: 'This is an empty post'
     click_on 'Create Post'
@@ -45,12 +45,12 @@ feature "Manage a user" do
     fill_in 'Password', with: "password"
     click_button 'Sign in'
 
-    visit new_user_post_path(@Joe)
+    visit new_post_path(@post)
     fill_in 'Title', with: 'Top 10 today'
     fill_in 'Body', with: 'This is an empty post'
     click_on 'Create Post'
 
-    visit new_user_post_comment_path(@Joe, @post)
+    visit new_post_comment_path(@post)
     fill_in 'Body', with: 'Pretty Decent!'
     click_on 'Create Comment'
 

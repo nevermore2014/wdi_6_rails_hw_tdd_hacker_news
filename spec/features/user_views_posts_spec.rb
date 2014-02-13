@@ -11,10 +11,10 @@ feature 'User views their posts' do
     create(:post, title: 'Jerkface')
 
     sign_in_as(user)
+    save_and_open_page
     expect(page).to have_content 'Top 10 today'
     expect(page).to have_content 'Great story'
     expect(page).to have_content 'Obama'
-
     expect(page).to_not have_content 'Jerkface'
   end
 
@@ -26,8 +26,8 @@ feature 'User views their posts' do
 
       create(:comment, body: 'Awesome!', user: @user, post: @post)
       sign_in_as(@user)
-      visit user_post_path(@user, @post)
-      save_and_open_page
+      visit post_path(@post)
+      
 
 
       expect(page).to have_content 'Awesome!'

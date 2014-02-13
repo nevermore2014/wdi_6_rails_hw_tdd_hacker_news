@@ -2,11 +2,7 @@ class PostsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :new, :create]
   before_action :get_user, only: [:show]
   def index
-    if !current_user
-      @posts = Post.all
-    else
-      @posts = current_user.posts
-    end
+    @posts = Post.all
   end
 
   def new
@@ -18,7 +14,7 @@ class PostsController < ApplicationController
     @post = Post.create!(posts_params)
     @post.save!
     current_user.posts << @post
-    redirect_to user_posts_path
+    redirect_to posts_path
   end
 
   def show

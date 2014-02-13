@@ -8,12 +8,13 @@ class CommentsController < ApplicationController
 
   def new
     @comment = Comment.new
+    @vote = Vote.new
   end
 
   def create
     @comment = Comment.create!(comments_params)
     @comment.save!
-    redirect_to user_post_comments_path
+    redirect_to post_comments_path
   end
 
 

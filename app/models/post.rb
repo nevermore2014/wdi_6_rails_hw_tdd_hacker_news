@@ -7,10 +7,10 @@ class Post < ActiveRecord::Base
   validates :body, presence: true
 
 
-  def vote_count
-       up_votes = votes.where(direction: true).count
-       down_votes = votes.where(direction: false).count
-       up_votes - down_votes
-  end 
+  # def self.vote_count
+  #   up_votes = Vote.where(direction: true).count
+  #   down_votes = Vote.where(direction: false).count
+  #   up_votes - down_votes
+  # end
 
 end

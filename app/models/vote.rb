@@ -1,7 +1,5 @@
 class Vote < ActiveRecord::Base
   belongs_to :votable, polymorphic: true
-
-  def count
-    
-  end
+  belongs_to :user
+  validates :user, uniqueness: { scope: [:votable_type, :votable_id ] }
 end
