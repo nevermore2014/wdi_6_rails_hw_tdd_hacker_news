@@ -1,5 +1,9 @@
 <h1>Comments</h1>
-
+<%= @post.title %></br>
+<%= @post.body %></br>
 <% @post.comments.each do |comment| %>
   <%= comment.body %>
+  </br>
 <% end %>
+</br>
+<%= link_to "Make a comment", new_post_comment_path(@post) %>

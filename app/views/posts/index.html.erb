@@ -1,8 +1,7 @@
 <h1>View all posts</h1> 
 
 <% @posts.each do |post| %>
-  <%= post.title %>
-  <%= post.body %>
+  <%= link_to post.title, post_path(post) %>
   <%= vote_count(post) %> points |
   <% if user_signed_in? %>
     <%= link_to 'Up vote', post_votes_path(post, direction: true ), method: :post %> | <%= link_to 'Down vote', post_votes_path(post, direction: false), method: :post %>
