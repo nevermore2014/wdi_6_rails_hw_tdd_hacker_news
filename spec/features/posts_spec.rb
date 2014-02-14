@@ -33,7 +33,7 @@ feature "Manage a user" do
     fill_in 'Body', with: 'This is an empty post'
     click_on 'Create Post'
 
-    expect(page).to have_content("View all posts")
+    expect(page).to have_content("Hacker News")
     expect(page).to have_content("Top 10 today")
 
 

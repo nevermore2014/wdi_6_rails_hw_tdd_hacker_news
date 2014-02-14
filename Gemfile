@@ -20,6 +20,7 @@ group :test do
   gem 'launchy'
   gem 'faker'
   gem 'chronic'
+  gem 'simplecov'
   gem 'factory_girl_rails'
 end
 
@@ -30,6 +31,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'pry-rails'
   gem 'pry-nav'
+
   gem 'pry-stack_explorer'
 end
 
