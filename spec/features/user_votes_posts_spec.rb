@@ -24,7 +24,4 @@ feature 'user views all the posts' do
     expect(page).to have_content 'User has already been taken'
   end
 
-
-  
-
 end

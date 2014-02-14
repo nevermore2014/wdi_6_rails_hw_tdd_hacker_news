@@ -11,4 +11,9 @@ module ApplicationHelper
     comment_found = Comment.find(votable.id)
     comment_found.votes.where(direction: true).count - comment_found.votes.where(direction: false).count
   end
+
+  def decay(post)
+    post = Post.find(post.id)
+    (Time.now - post.created_at)/86400
+  end
 end

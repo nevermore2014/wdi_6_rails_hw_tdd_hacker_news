@@ -1,3 +1,6 @@
+# Rack::MiniProfiler.profile_method PostsController, 'sleep_in'
+
+
 HackerNews::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
