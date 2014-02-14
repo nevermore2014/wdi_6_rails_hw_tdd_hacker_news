@@ -17,5 +17,14 @@ FactoryGirl.define do
     body 'Pretty decent'
   end
 
+  factory :post_vote, class: Vote do
+    association :votable, factory: :post
+    association :user
+  end
+
+  factory :comment_vote, class: Vote do
+    association :votable, factory: :comment
+    association :user
+  end
 
 end
