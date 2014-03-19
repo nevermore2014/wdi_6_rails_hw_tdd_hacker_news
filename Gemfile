@@ -12,6 +12,8 @@ gem 'devise'
 
 gem 'newrelic_rpm'
 
+gem 'rack-mini-profiler'
+
 # These are gems you may find useful for testing
 # I have NOT created configuration in the /spec directory for you
 # You'll have to refer to your notes for spec_helper configuration
