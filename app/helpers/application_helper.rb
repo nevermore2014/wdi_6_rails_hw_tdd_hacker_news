@@ -12,9 +12,5 @@ module ApplicationHelper
   def comment_found_method(found)
     found.votes.where(direction: true).count - found.votes.where(direction: false).count
   end
-  # If the post has been post more than 1 day, it will disapear from the main page
-  def decay(post)
-    post = Post.find(post.id)
-    (Time.now - post.created_at)/86400
-  end
+
 end
